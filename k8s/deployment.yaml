@@ -1,19 +1,22 @@
+--- 
 apiVersion: apps/v1
 kind: Deployment
-metadata:
+metadata: 
   name: imgclass
-spec:
+spec: 
   replicas: 2
-  selector:
-    matchLabels:
+  selector: 
+    matchLabels: 
       app: imageclassifier
-  template:
-    metadata:
-      labels:
+  template: 
+    metadata: 
+      labels: 
         app: imageclassifier
-    spec:
-      containers:
-      - name: cv-app
-        image: gcr.io/my-vision-project-283816/myapp:v1
-        ports:
-        - containerPort: 8501
+    spec: 
+      containers: 
+        - 
+          image: "gcr.io/dynamic-music-322221/myapp:v1"
+          name: cv-app
+          ports: 
+            - 
+              containerPort: 8501

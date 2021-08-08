@@ -14,6 +14,7 @@ st.text("Provide URL of Location Image for image classification")
 
 @st.cache(allow_output_mutation=True)
 def load_model():
+
   model = tf.keras.models.load_model('/app/models/')
   return model
 
@@ -23,11 +24,12 @@ with st.spinner('Loading Model Into Memory....'):
 classes = ['buildings', 'forest', 'glacier', 'mountain', 'sea', 'street']
 
 def decode_img(image):
+  
   img = tf.image.decode_jpeg(image, channels=3)  
   img = tf.image.resize(img,[150,150])
   return np.expand_dims(img, axis=0)
 
-path = st.text_input('Enter Image URL to Classify.. ','https://storage.googleapis.com/image_classification_2021/Glacier-Argentina-South-America-blue-ice.JPEG')
+path = st.text_input('Enter Image URL to Classify.. ','https://storage.googleapis.com/image_classification_2021/glaciar.jpg')
 if path is not None:
     content = requests.get(path).content
 
